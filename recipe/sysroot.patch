@@ -1,0 +1,13 @@
+diff --git a/SConsTools/src/tools/psdm_cplusplus.py b/SConsTools/src/tools/psdm_cplusplus.py
+index 300fa53..cfa749a 100644
+--- a/SConsTools/src/tools/psdm_cplusplus.py
++++ b/SConsTools/src/tools/psdm_cplusplus.py
+@@ -47,7 +47,7 @@ def generate(env):
+         env.Append(CCFLAGS = ' ' + _gcc_opt.get(opt,'') + ' -Wall')
+         env.Append(CXXFLAGS = ' -Wno-invalid-offsetof -Wno-unused-local-typedefs')
+         #env.Append(LINKFLAGS = ' ' + _ld_opt.get(opt,'') + ' -Wl,--copy-dt-needed-entries -Wl,--enable-new-dtags')
+-        env.Append(LINKFLAGS = ' ' + _ld_opt.get(opt,''))
++        env.Append(LINKFLAGS = ' -Wl,--sysroot=%s/x86_64-conda-linux-gnu/sysroot '%os.getenv('BUILD_PREFIX') + _ld_opt.get(opt,''))
+
+     elif comp in [ 'gcc53', 'gcc52', 'gcc51']:
+         env['CC'] = 'gcc'
